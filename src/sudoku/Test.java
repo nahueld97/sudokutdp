@@ -1,15 +1,28 @@
 package sudoku;
 
+import java.awt.EventQueue;
 import java.io.File;
 
 import logica.Juego;
 
 public class Test {
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
-		Juego j= new Juego();
-		File f=new File("C:\\Users\\Usuario\\eclipse-workspace\\sudoku\\src\\init.txt");
-		j.iniciar(f);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Juego j = new Juego();
+					File f = new File("src\\init.txt");
+					GUI window = new GUI(j);
+					window.iniciarJuego(f);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 }
